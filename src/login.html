@@ -1,0 +1,11 @@
+<template>
+    <h1>Login</h1>
+    <form submit.trigger="getCode()">
+        <input type="text" value.bind="mobile" placeholder="Mobilnummer">
+        <button type="submit" if.bind="!showCode">Skicka kod</button>
+    </form>
+    <form submit.trigger="login()" if.bind="showCode">
+        <input type="text" value.bind="code" placeholder="Kod">
+        <button type="submit">Logga in</button>
+    </form>
+</template>

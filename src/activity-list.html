@@ -1,0 +1,14 @@
+<template>
+    <div class="activity-list">
+        <ul>
+            <li repeat.for="activity of activities">
+                <span>${activity.name}</span>
+                <span>${activity.units}</span>
+                <span>${activity.unit}</span>                
+                <span>${activity.date}</span>                
+                <span>${activity.comment}</span>                
+                <span>${activity.points}</span>                
+            </li>
+        </ul>
+    </div>
+</template>

@@ -1,0 +1,20 @@
+<template>
+    <require from="./activity-list"></require>
+
+    <form submit.trigger="addActivity()">
+        <select value.bind="activityTypeId" change.delegate="activityTypeSelected(activityTypeId)">
+            <option repeat.for="type of activityTypes" value.bind="type.id">${type.name}</option>
+        </select>
+        <input type="text" value.bind="units" placeholder="${activityType.unit}">
+        <span>${activityType.unit}</span>
+        <input type="date" value.bind="date">
+        <select value.bind="rating">
+            <option repeat.for="r of ratings" value.bind="r">${r}</option>
+        </select>
+        <input type="number" value.bind="bonusMultiplier" placeholder="Bonus">
+        <input type="text" value.bind="comment" placeholder="Kommentar">
+        <button type="submit">Lägg till Aktivitet</button>
+    </form>
+
+    <activity-list></activity-list>
+</template>
