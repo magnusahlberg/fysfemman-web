@@ -30,9 +30,9 @@ export class WebAPI {
   getActivityList() {
     this.isRequesting = true;
 
-    return new Promise((resolve, reject)=> {
+    return new Promise((resolve, reject) => {
       this.client.fetch('/activities')
-      .then(response => response.json())
+      .then(response => { response.json() })
       .then(data => {
         console.log(data);
         resolve(data);
@@ -47,7 +47,7 @@ export class WebAPI {
 
     return new Promise((resolve, reject)=> {
       this.client.fetch('/activityTypes')
-      .then(response => response.json())
+      .then(response => { response.json() })
       .then(data => {
         console.log(data);
         resolve(data);
@@ -71,7 +71,7 @@ export class WebAPI {
           'Accept': 'application/json'
         }
       })
-      .then(response => response.json())
+      .then(response => { return response.json() })
       .then(data => {
         console.log(data);
         resolve(data);
@@ -85,9 +85,17 @@ export class WebAPI {
     this.isRequesting = true;
 
     return new Promise((resolve, reject) => {
-      this.client.fetch('/login/' + mobile)
-      .then(resolve(true))
-      .catch(error => resolve(error));
+      let url = '/login/' + mobile;
+      console.log("Fetching code: " + url);
+
+      this.client.fetch(url)
+      .then(response => {
+        console.log("Fetched code!");
+        resolve(true);
+      })
+      .catch(error => {
+        console.log("Error: " + error.message);
+        reject(error) });
       this.isRequesting = false;
     });
   }
@@ -106,7 +114,7 @@ export class WebAPI {
           'Accept': 'application/json'
         }
       })
-      .then(response => response.json())
+      .then(response => { return response.json() })
       .then(data => {
         console.log(data);
         resolve(data["token"]);

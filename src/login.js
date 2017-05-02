@@ -13,7 +13,9 @@ export class Login {
     }
 
     getCode() {
-        this.api.getCode(this.mobile);
+        this.api.getCode(this.mobile)
+        .then(() => { console.log("Code sent!") })
+        .catch(error => { console.log("Error: " + error) });
         this.showCode = true;
     }
     
