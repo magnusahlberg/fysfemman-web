@@ -7,7 +7,8 @@ export class Activities {
     constructor(api) {
         this.api = api;
         this.activityTypes = [];
-        this.ratings = Array.from(Array(5), (e,i)=>i+1)
+        this.ratings = Array.from(Array(4).keys());
+        this.displayRatings = ['🙈','👎','👍','🌟'];
         this.bonusMultiplier = 0;
         this.rating = 1;
         this.units = 0;

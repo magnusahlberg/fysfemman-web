@@ -9,7 +9,7 @@
         <span>${activityType.unit}</span>
         <input type="date" value.bind="date">
         <select value.bind="rating">
-            <option repeat.for="r of ratings" value.bind="r">${r}</option>
+            <option repeat.for="r of ratings" value.bind="r">${displayRatings[r]}</option>
         </select>
         <input type="number" value.bind="bonusMultiplier" placeholder="Bonus">
         <input type="text" value.bind="comment" placeholder="Kommentar">
