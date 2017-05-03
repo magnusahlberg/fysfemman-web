@@ -7,6 +7,7 @@ export class ActivityList {
 
     constructor(api) {
         this.api = api;
+        this.displayRatings = ['🙈','👎','👍','🌟'];
     }
 
 }
