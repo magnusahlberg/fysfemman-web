@@ -11,7 +11,6 @@ export class WebAPI {
     .useStandardConfiguration()
     .withBaseUrl( environment.baseurl + '/api/v1')
     .withDefaults({
-      credentials: 'no-cors',
       headers: {
         'X-Requested-With': 'Fetch'
       }
@@ -32,7 +31,7 @@ export class WebAPI {
 
     return new Promise((resolve, reject) => {
       this.client.fetch('/activities')
-      .then(response => { response.json() })
+      .then(response => { return response.json() })
       .then(data => {
         console.log(data);
         resolve(data);
@@ -47,7 +46,7 @@ export class WebAPI {
 
     return new Promise((resolve, reject)=> {
       this.client.fetch('/activityTypes')
-      .then(response => { response.json() })
+      .then(response => { return response.json() })
       .then(data => {
         console.log(data);
         resolve(data);
