@@ -6,15 +6,19 @@ export class Activities {
 
     constructor(api) {
         this.api = api;
+        this.activities = [];
         this.activityTypes = [];
         this.ratings = Array.from(Array(4).keys());
         this.displayRatings = ['🙈','👎','👍','🌟'];
-        this.bonusMultiplier = 0;
-        this.rating = 1;
+        this.clear();
+    }
+
+    clear() {
+        this.bonusMultiplier = '';
+        this.rating = 2;
         this.units = 0;
         this.comment = '';
         this.date = new Date().toISOString().substring(0,10);
-        console.log("Date: " + this.date);
         this.activityType = {};
         this.activityTypeId = '';
     }
@@ -25,6 +29,7 @@ export class Activities {
             this.activityType = this.activityTypes[0];
             this.activityTypeId = this.activityType.id;
         });
+        this.api.getActivityList().then(activities => this.activities = activities);
     }
 
     addActivity() {
@@ -36,9 +41,13 @@ export class Activities {
             bonusMultiplier: parseFloat(this.bonusMultiplier),
             comment: this.comment
         }
-        this.api.addActivity(activity);
-//        .then(console.log('Added!'))
-//        .catch(console.log('Error adding!'));
+        this.api.addActivity(activity)
+        .then(activity => {
+            console.log('Added!');
+            this.activities.unshift(activity);
+            this.clear();
+        })
+        .catch(error => { console.log('Error adding. ' + error)});
     }
 
     unitFromActivityType(type) {

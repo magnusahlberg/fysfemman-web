@@ -1,14 +1,12 @@
 import {WebAPI} from './web-api';
-import {inject} from 'aurelia-framework';
+import {inject,bindable} from 'aurelia-framework';
 
 @inject(WebAPI)
 export class ActivityList {
+    @bindable activities;
+
     constructor(api) {
         this.api = api;
-        this.activities = [];
     }
 
-    created() {
-        this.api.getActivityList().then(activities => this.activities = activities);
-    }
 }
