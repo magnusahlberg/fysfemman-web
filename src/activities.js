@@ -20,7 +20,7 @@ export class Activities {
         this.comment = '';
         this.date = new Date().toISOString().substring(0,10);
         this.activityType = {};
-        this.activityTypeId = '';
+        this.activityTypeId = 0;
     }
 
     created() {
