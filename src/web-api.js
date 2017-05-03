@@ -85,11 +85,8 @@ export class WebAPI {
 
     return new Promise((resolve, reject) => {
       let url = '/login/' + mobile;
-      console.log("Fetching code: " + url);
-
       this.client.fetch(url)
       .then(response => {
-        console.log("Fetched code!");
         resolve(true);
       })
       .catch(error => {
