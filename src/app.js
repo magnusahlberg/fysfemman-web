@@ -2,7 +2,7 @@ import {Redirect} from 'aurelia-router';
 
 export class App {
   configureRouter(config, router) {
-    config.title = 'Activities';
+    config.title = 'Fysfemman';
     config.addPipelineStep('authorize', AuthorizeStep);
     config.map([
       { route: ['', 'activities'], moduleId: 'activities', name: 'activities', auth: true},
