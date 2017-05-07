@@ -18,7 +18,7 @@ export class Login {
         .catch(error => { console.log("Error: " + error) });
         this.showCode = true;
     }
-    
+
     login() {
         this.api.login(this.mobile, this.code)
         .then(token => {

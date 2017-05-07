@@ -2,18 +2,26 @@
     <require from="./activity-list"></require>
 
     <form submit.trigger="addActivity()">
-        <select value.bind="activityTypeId" change.delegate="activityTypeSelected(activityTypeId)">
+        <select value.bind="activityTypeId" class.bind="activityTypeClass" change.delegate="activityTypeSelected(activityTypeId)">
             <option repeat.for="type of activityTypes" value.bind="type.id">${type.name}</option>
         </select>
-        <input type="text" value.bind="units" placeholder="${activityType.unit}">
-        <span>${activityType.unit}</span>
-        <input type="date" value.bind="date">
-        <select value.bind="rating">
-            <option repeat.for="r of ratings" value.bind="r">${displayRatings[r]}</option>
-        </select>
-        <input type="number" value.bind="bonusMultiplier" placeholder="Bonus">
-        <input type="text" value.bind="comment" placeholder="Kommentar">
-        <button type="submit">Lägg till Aktivitet</button>
+        <div class="activityFields" if.bind="showActivityFields">
+            <div id="unitUnits">
+                <span id="unit">${unit}</span>
+                <input type="text" id="units" value.bind="units" placeholder="${activityType.unit}">
+            </div>
+            <input type="date" value.bind="date">
+            <div class="ratingLabel">Hur gick det?</div>
+            <div class="ratings">
+                <span repeat.for="r of ratings">
+                <input type="radio" model.bind="r" id="rating_${r}" name="rating" checked.bind="$parent.rating">
+                <label for="rating_${r}">${displayRatings[r]}</label>
+                </span>
+            </div>
+            <input id="bonus" type="number" value.bind="bonusMultiplier" placeholder="Bonus">
+            <input id="comment" type="text" value.bind="comment" placeholder="Kommentar">
+            <button type="submit">Lägg till</button>
+        </div>
     </form>
 
     <activity-list activities.bind="activities"></activity-list>

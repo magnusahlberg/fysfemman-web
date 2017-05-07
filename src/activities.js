@@ -1,5 +1,5 @@
 import { WebAPI } from './web-api';
-import { inject } from 'aurelia-framework';
+import { inject, computedFrom } from 'aurelia-framework';
 
 @inject(WebAPI)
 export class Activities {
@@ -13,23 +13,44 @@ export class Activities {
         this.clear();
     }
 
+    @computedFrom('activityTypeId')
+    get showActivityFields() {
+        if (this.activityTypeId && this.activityTypeId != 0) {
+            return true;
+        }
+        return false;
+    }
+
+    @computedFrom('activityType')
+    get unit() {
+        if (this.activityType) {
+            return this.activityType["unit"]
+        } else {
+            return ""
+        }
+    }
+
     clear() {
         this.bonusMultiplier = '';
-        this.rating = 2;
+        this.rating = null;
         this.units = 0;
         this.comment = '';
         this.date = new Date().toISOString().substring(0,10);
-        this.activityType = {};
-        this.activityTypeId = 0;
+        this.activityType = null;
+        this.activityTypeId = null;
+        this.activityTypeClass = ""
     }
 
     created() {
         this.api.getActivityTypes().then(activityTypes => {
             this.activityTypes = activityTypes
+            this.activityTypes.unshift({id: 0, name: 'Ny aktivitet'});
             this.activityType = this.activityTypes[0];
             this.activityTypeId = this.activityType.id;
         });
-        this.api.getActivityList().then(activities => this.activities = activities);
+        this.api.getActivityList().then(activities => {
+            this.activities = activities;
+        });
     }
 
     addActivity() {
@@ -50,17 +71,13 @@ export class Activities {
         .catch(error => { console.log('Error adding. ' + error)});
     }
 
-    unitFromActivityType(type) {
-        let activityType = this.activityTypes[type];
-        if (activityType != null) {
-            return activityType["unit"]
-        } else {
-            return ""
-        }
-    }
-
     activityTypeSelected(selectedType) {
         this.activityTypeId = selectedType;
         this.activityType = this.activityTypes.find(activityType => { return activityType.id == selectedType });
+        if (this.ActivityTypeId == 0) {
+            this.activityTypeClass = ""
+        } else {
+            this.activityTypeClass = "selected"
+        }
     }
 }

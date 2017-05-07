@@ -1,6 +1,164 @@
+* {
+  font-family: 'fira-sans', sans-serif;
+}
+
+body {
+  padding: 10px 5%;
+}
+
 input, select, option, button {
-  font-size: 24pt;
+  font-size: 18pt;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  box-sizing: border-box;
+  margin-top: 8px;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+input[type="radio"] ~ label {
+  border: 1px rgba(255, 255, 255, 0) solid;
+  padding: 1pt 0.2em;
+  font-size: 36pt;
+}
+
+input[type="radio"]:checked ~ label {
+  border: 1px #88B24B solid;
+  background: rgba(136, 178, 75, 0.3);
+}
+
+input[type="text"], input[type="number"], input[type="date"] {
+  border: 1px #ddd solid;
+  color: #444;
+}
+
+#unitUnits {
+  position: relative;
+}
+
+#unit {
+  color: #666;
+  height: 100%;
+  font-size: 18pt;
+  padding: 4pt 0px;
+  top: 5px;
+  right: 8pt;
+  position: absolute;
+  vertical-align: middle;
+}
+
+input[type="text"], #comment, #bonus, input[type="date"], #units {
+  width: 100%;
+}
+
+button[type="submit"] {
+  border: none;
+  border-radius: 0px;
+  background-color: #88B24B;
+  color: #fff;
+  font-weight: 700;
+  margin-left: 0px;
+  margin-right: 0px;
+  padding: 10px 20px;
+  text-align-last: center;
+  text-align: center;
+  width: 100%;
+}
+
+select {
+  border: none;
+  border-radius: 0px;
+  background-color: #88B24B;
+  color: #fff;
+  font-weight: 700;
+  margin-left: 0px;
+  margin-right: 0px;
+  padding: 10px 20px;
+  text-align-last: center;
+  text-align: center;
+  width: 100%;
+}
+
+.selected {
+  background-color: #ddd;
+  color: #444;
+}
+
+.activityFields {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.activity-list ul {
+  margin: 20px 0px;
+  padding: 0px;
+}
+
+.activity-list li {
+  background: #f9f9f9;
+  border: 1px #ddd solid;
+  display: block;
+  list-style: none outside none;
+  margin: 10px 0px;
+  padding: 4pt;
+  position: relative;
+}
+
+.activity-list .date {
+  color: #666;
+  font-size: 8pt;
+  font-weight: 300;
+  text-align: center;
+}
+
+.activity-list .name, .activity-list .unit, .activity-list .units {
+  color: #444;
+  display: inline;
+  font-size: 16pt;
+  font-weight: 400;
+}
+
+.activity-list .name {
+  margin-right: 0.5em;
+}
+
+.activity-list .units {
+  margin-right: 0.1em;
+}
+
+.activity-list .comment {
+  color: #444;
+  font-weight: 300;
+  font-size: 12pt;
+}
+
+.activity-list .rating {
+  font-size: 12pt;
+  position: absolute;
+  right: 2pt;
+  top: 1pt;
+}
+
+.activity-list .points {
+  font-size: 18pt;
+  position: absolute;
+  right: 4pt;
+  bottom: 0pt;
+}
+
+.ratings {
+  display: flex;
+  justify-content: space-between;
+  margin: 2px -4px 2px 0px;
+}
+
+.ratingLabel {
+  color: #666;
+  font-size: 10pt;
+  font-weight: 300;
+  margin-top: 8px;
+  text-align: center;
 }
