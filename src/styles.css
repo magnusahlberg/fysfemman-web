@@ -162,3 +162,28 @@ select {
   margin-top: 8px;
   text-align: center;
 }
+
+.summary {
+  color: #444;
+  padding: 8px;
+  position: relative;
+  margin-bottom: 15px;
+}
+
+.summary .totalLabel {
+  font-weight: 300;
+  text-align: center;
+}
+
+.summary .totalValue {
+  font-size: 24pt;
+  color: #5787A2;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+.summary h3 {
+  text-align: center;
+  margin-bottom: 10px;
+}

@@ -1,5 +1,8 @@
 <template>
     <require from="./activity-list"></require>
+    <require from="./activity-summary"></require>
+
+    <activity-summary activities.bind="activities"></activity-summary>
 
     <form submit.trigger="addActivity()">
         <select value.bind="activityTypeId" class.bind="activityTypeClass" change.delegate="activityTypeSelected(activityTypeId)">
